@@ -200,8 +200,9 @@ def drawdown_is_exceeded(path_track, asset, max_drawdown):
 
             down = (-(max_ - sume))
             print("(-(",max_, "-", sume, ")) =", down, "  ", down < (-max_drawdown[0]), "   ", down, " < ", (-max_drawdown[0]), "  ", max_drawdown[0], "    ", max_drawdown[1])
-        if down < (-max_drawdown[0]):
-            return True
+            
+            if down < (-max_drawdown[0]):
+                return True
 
     return False
 
@@ -689,11 +690,11 @@ def MT4_optimisation_function(test_asset, trading_asset, spread, copy_paste_file
 
 pause            = threading.Event()
 demande_la_pause = threading.Event()
-all_informations = [ [ "ETHUSD", "REAL", "60", (True, True), (2, 0), (0, 20), [0.67251389] ], 
-                     [ "US500.cash", "REAL", "70", (True, True), (3, 0), (1, 0), [] ],
+all_informations = [ [ "US500.cash", "REAL", "70", (True, True), (3, 0), (1, 0), [] ],
                      [ "UKOIL.cash", "REAL", "80", (True, True), (3, 0), (1, 0), [] ],
                      [ "GBPUSD", "REAL", "10", (True, True), (3, 0), (1, 0), [] ],
-                     [ "LVMH", "REAL", "15", (True, True), (3, 0), (1, 0), [] ]
+                     [ "LVMH", "REAL", "15", (True, True), (3, 0), (1, 0), [] ],
+                     [ "ETHUSD", "REAL", "60", (True, True), (2, 0), (0, 20), [(0.67251389, '2026.09.20 22:58:55'), 0.9848324] ]
                     ]
 
 thread = threading.Thread(target=verify_and_manage_real, args=(all_informations, (0, 23), pause, demande_la_pause,))
